@@ -175,34 +175,6 @@ if (statsSection) {
     statsObserver.observe(statsSection);
 }
 
-// Contact Form
-const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    // Get form data
-    const formData = new FormData(contactForm);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
-
-    // Basic validation
-    if (!name || !email || !subject || !message) {
-        showNotification('Please fill in all fields', 'error');
-        return;
-    }
-
-    if (!isValidEmail(email)) {
-        showNotification('Please enter a valid email address', 'error');
-        return;
-    }
-
-    // Simulate form submission
-    showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-    contactForm.reset();
-});
-
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
